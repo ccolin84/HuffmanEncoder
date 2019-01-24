@@ -7,40 +7,41 @@ import org.junit.jupiter.api.Test;
 class HuffmanTreeTest {
 
 	@Test
-	void testConstructorNoValues() {
-		HuffmanNode[] values = {};
-		HuffmanTree huffmanTree = new HuffmanTree(values);
+	void constructor_GivenNoValues_TreeRootIsNull() {
+		String message = "";
+		HuffmanTree huffmanTree = new HuffmanTree(message);
 
-		assertEquals(null, huffmanTree.getRoot());
+		HuffmanNode root = huffmanTree.getRoot();
+
+		assertEquals(null, root);
 	}
 
 	@Test
-	void testConstructorOneValue() {
-		HuffmanValueNode value = new HuffmanValueNode(2, 'c');
-		HuffmanNode[] values = { value };
-		HuffmanTree huffmanTree = new HuffmanTree(values);
+	void constructor_GivenStringWithOneChar_TreeRootContainsThatChar() {
+		String message = "cc";
+		HuffmanTree huffmanTree = new HuffmanTree(message);
 
-		assertEquals(value, huffmanTree.getRoot());
+		HuffmanNode root = huffmanTree.getRoot();
+
+		assertEquals(2, root.getFrequency());
+		assertEquals('c', ((HuffmanValueNode) root).getValue());
 	}
 
 	@Test
-	void testConstructorTwoValues() {
-		HuffmanValueNode value1 = new HuffmanValueNode(2, 'c');
-		HuffmanValueNode value2 = new HuffmanValueNode(5, 'a');
-		HuffmanNode[] values = { value1, value2 };
-		HuffmanTree huffmanTree = new HuffmanTree(values);
+	void constructor_GivenAStringWithTwoChars_TreeRootCombinesThoseCharsIntoANode() {
+		String message = "ccaaaaa";
+		HuffmanTree huffmanTree = new HuffmanTree(message);
 
-		assertEquals(7, huffmanTree.getRoot().getFrequency());
+		HuffmanNode root = huffmanTree.getRoot();
+
+		assertEquals(7, root.getFrequency());
 	}
 
 	@Test
-	void testConstructorThreeValues() {
-		HuffmanNode value1 = new HuffmanValueNode(1, 'a');
-		HuffmanNode value2 = new HuffmanValueNode(2, 'b');
-		HuffmanNode value3 = new HuffmanValueNode(6, 'c');
-		HuffmanNode[] values = { value1, value2, value3 };
+	void constructor_GivenAStringWithThreeChars_TreeRootCombinesThoseCharsIntoANode() {
+		String message = "abbcccccc";
+		HuffmanTree huffmanTree = new HuffmanTree(message);
 
-		HuffmanTree huffmanTree = new HuffmanTree(values);
 		HuffmanCombinedNode root = (HuffmanCombinedNode) huffmanTree.getRoot();
 
 		assertEquals(9, root.getFrequency());

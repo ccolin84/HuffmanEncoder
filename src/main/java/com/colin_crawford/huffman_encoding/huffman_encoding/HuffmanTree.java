@@ -1,15 +1,17 @@
 package com.colin_crawford.huffman_encoding.huffman_encoding;
 
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 public class HuffmanTree {
 
 	private HuffmanNode root;
 
-	HuffmanTree(HuffmanNode[] values) {
-		PriorityQueue<HuffmanNode> sortedValues = new PriorityQueue<HuffmanNode>();
-		Arrays.stream(values).forEach(sortedValues::add);
+	HuffmanTree(String message) {
+		Collection<HuffmanNode> values = this.getFrequencyValueNodes(message);
+		PriorityQueue<HuffmanNode> sortedValues = new PriorityQueue<HuffmanNode>(values);
 		this.root = this.buildTree(sortedValues);
 	}
 
@@ -25,5 +27,12 @@ public class HuffmanTree {
 			sortedValues.add(combined);
 		}
 		return sortedValues.poll();
+	}
+
+	private Collection<HuffmanNode> getFrequencyValueNodes(String message) {
+		Iterable<Character> messageChars = CharacterIterable.of(message);
+		Map<Character, Integer> frequencies = new FrequencyCounter<Character>(messageChars).getFrequencies();
+		return frequencies.entrySet().stream().map(entry -> new HuffmanValueNode(entry.getValue(), entry.getKey()))
+				.collect(Collectors.toList());
 	}
 }

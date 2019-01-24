@@ -44,7 +44,7 @@ class HuffmanTreeTest {
 		HuffmanCombinedNode root = (HuffmanCombinedNode) huffmanTree.getRoot();
 
 		assertEquals(9, root.getFrequency());
-		assertEquals(3, root.getLeft().getFrequency());
-		assertEquals(6, root.getRight().getFrequency());
+		assertEquals(6, root.getLeft().getFrequency());
+		assertEquals(3, root.getRight().getFrequency());
 	}
 }

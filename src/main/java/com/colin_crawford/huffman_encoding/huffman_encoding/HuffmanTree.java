@@ -19,9 +19,9 @@ public class HuffmanTree {
 
 	private HuffmanNode buildTree(PriorityQueue<HuffmanNode> sortedValues) {
 		while (sortedValues.size() > 1) {
-			HuffmanNode first = sortedValues.poll();
-			HuffmanNode second = sortedValues.poll();
-			HuffmanCombinedNode combined = new HuffmanCombinedNode(first, second);
+			HuffmanNode lowerFrequency = sortedValues.poll();
+			HuffmanNode higherFrequency = sortedValues.poll();
+			HuffmanCombinedNode combined = new HuffmanCombinedNode(higherFrequency, lowerFrequency);
 			sortedValues.add(combined);
 		}
 		return sortedValues.poll();

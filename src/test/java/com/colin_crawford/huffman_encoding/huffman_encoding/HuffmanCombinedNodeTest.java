@@ -13,7 +13,7 @@ class HuffmanCombinedNodeTest {
 
 		HuffmanCombinedNode combined = new HuffmanCombinedNode(first, second);
 
-		assertEquals(combined.getFrequency(), 25);
+		assertEquals(25, combined.getFrequency());
 	}
 
 }

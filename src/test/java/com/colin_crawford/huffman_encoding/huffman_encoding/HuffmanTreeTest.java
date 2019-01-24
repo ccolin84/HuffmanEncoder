@@ -11,7 +11,7 @@ class HuffmanTreeTest {
 		HuffmanNode[] values = {};
 		HuffmanTree huffmanTree = new HuffmanTree(values);
 
-		assertEquals(huffmanTree.getRoot(), null);
+		assertEquals(null, huffmanTree.getRoot());
 	}
 
 	@Test

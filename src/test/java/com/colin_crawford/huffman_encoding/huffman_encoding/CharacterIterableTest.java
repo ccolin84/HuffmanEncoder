@@ -1,6 +1,7 @@
 package com.colin_crawford.huffman_encoding.huffman_encoding;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,19 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CharacterIterableTest {
+	@Test
+	void toString_GivenANullIterable_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CharacterIterable.toString(null);
+		});
+	}
+
+	@Test
+	void of_GivenANullString_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			CharacterIterable.of(null);
+		});
+	}
 
 	@Test
 	void toString_GivenEmptyIterable_ReturnsEmptyString() {

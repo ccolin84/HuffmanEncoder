@@ -10,6 +10,10 @@ public class HuffmanTree {
 	private HuffmanNode root;
 
 	HuffmanTree(String message) {
+		if (message == null) {
+			throw new IllegalArgumentException("message cannot be null");
+		}
+
 		Collection<HuffmanNode> values = this.getFrequencyValueNodes(message);
 		PriorityQueue<HuffmanNode> sortedValues = new PriorityQueue<HuffmanNode>(values);
 		this.root = this.buildTree(sortedValues);

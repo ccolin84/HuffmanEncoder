@@ -1,10 +1,18 @@
 package com.colin_crawford.huffman_encoding.huffman_encoding;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 class HuffmanTreeTest {
+
+	@Test
+	void constructor_GivenANullMessage_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new HuffmanTree(null);
+		});
+	}
 
 	@Test
 	void constructor_GivenNoValues_TreeRootIsNull() {

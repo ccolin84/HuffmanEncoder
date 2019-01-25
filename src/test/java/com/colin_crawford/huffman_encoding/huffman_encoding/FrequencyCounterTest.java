@@ -1,6 +1,7 @@
 package com.colin_crawford.huffman_encoding.huffman_encoding;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,13 @@ import org.junit.jupiter.api.Test;
 class FrequencyCounterTest {
 
 	FrequencyCounter<Character> fcounter;
+
+	@Test
+	void constructor_GivenANullIterable_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new FrequencyCounter<Character>(null);
+		});
+	}
 
 	@Test
 	void getFrequency_GivenAnEmptyIterable_ReturnsAnEmptyMap() {

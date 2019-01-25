@@ -7,6 +7,10 @@ public class FrequencyCounter<E> {
 	private Map<E, Integer> frequencies = new HashMap<>();
 
 	FrequencyCounter(Iterable<E> values) {
+		if (values == null) {
+			throw new IllegalArgumentException("values cannot be null");
+		}
+
 		values.forEach(value -> {
 			Integer previousValue = frequencies.getOrDefault(value, 0);
 			frequencies.put(value, previousValue + 1);

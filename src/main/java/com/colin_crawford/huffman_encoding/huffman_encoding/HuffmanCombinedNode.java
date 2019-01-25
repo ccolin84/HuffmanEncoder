@@ -5,7 +5,18 @@ public class HuffmanCombinedNode extends HuffmanNode {
 	private final HuffmanNode right;
 
 	HuffmanCombinedNode(HuffmanNode left, HuffmanNode right) {
-		super(left.getFrequency() + right.getFrequency());
+		// prevents the null pointer exception
+		// prefer to throw illegalArgumentException
+		super((left != null ? left.getFrequency() : 0) + (right != null ? right.getFrequency() : 0));
+
+		if (left == null) {
+			throw new IllegalArgumentException("left node cannot be null");
+		}
+
+		if (right == null) {
+			throw new IllegalArgumentException("left node cannot be null");
+		}
+
 		this.left = left;
 		this.right = right;
 	}

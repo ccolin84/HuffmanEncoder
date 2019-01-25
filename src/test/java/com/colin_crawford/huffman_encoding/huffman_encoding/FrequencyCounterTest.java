@@ -13,7 +13,7 @@ class FrequencyCounterTest {
 	FrequencyCounter<Character> fcounter;
 
 	@Test
-	void testGetFrequencyWithEmptyIterable() {
+	void getFrequency_GivenAnEmptyIterable_ReturnsAnEmptyMap() {
 		List<Character> values = new ArrayList<>();
 		fcounter = new FrequencyCounter<Character>(values);
 
@@ -23,7 +23,7 @@ class FrequencyCounterTest {
 	}
 
 	@Test
-	void testGetFrequencyWithSingleValue() {
+	void getFrequency_GivenASingleValue_ReturnsAMapWithThatValueAndOne() {
 		List<Character> values = new ArrayList<>();
 		values.add('a');
 		fcounter = new FrequencyCounter<Character>(values);
@@ -35,7 +35,7 @@ class FrequencyCounterTest {
 	}
 
 	@Test
-	void testGetFrequencyWithManyValues() {
+	void getFrequency_GivenManyValues_ReturnsAMapWithThoseValuesMappedToTheirNumberOfOccurances() {
 		List<Character> values = new ArrayList<>();
 		values.add('a');
 		values.add('a');

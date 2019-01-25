@@ -8,19 +8,35 @@ import org.junit.jupiter.api.Test;
 class HuffmanNodeTest {
 
 	@Test
-	void testCompareTo() {
+	void compareTo_GivenAnEqualFrequencyNode_ReturnsZero() {
+		HuffmanNode node = new HuffmanNode(5);
+
+		int comparisonEqual = node.compareTo(node);
+
+		assertEquals(comparisonEqual, 0);
+	}
+
+	@Test
+	void compareTo_GivenALargerFrequencyNode_ReturnsANumberGreaterThanZero() {
+		int biggerNumber = 10;
+		int smallerNumber = 5;
+		HuffmanNode biggerNode = new HuffmanNode(biggerNumber);
+		HuffmanNode smallerNode = new HuffmanNode(smallerNumber);
+
+		int comparisonSmaller = smallerNode.compareTo(biggerNode);
+
+		assertTrue(comparisonSmaller < 0);
+	}
+
+	@Test
+	void compareTo_GivenASmallerlFrequencyNode_ReturnsANumberLessThanZero() {
 		int biggerNumber = 10;
 		int smallerNumber = 5;
 		HuffmanNode biggerNode = new HuffmanNode(biggerNumber);
 		HuffmanNode smallerNode = new HuffmanNode(smallerNumber);
 
 		int comparisonBigger = biggerNode.compareTo(smallerNode);
-		int comparisonSmaller = smallerNode.compareTo(biggerNode);
-		int comparisonEqual = biggerNode.compareTo(biggerNode);
 
 		assertTrue(comparisonBigger > 0);
-		assertTrue(comparisonSmaller < 0);
-		assertEquals(comparisonEqual, 0);
 	}
-
 }

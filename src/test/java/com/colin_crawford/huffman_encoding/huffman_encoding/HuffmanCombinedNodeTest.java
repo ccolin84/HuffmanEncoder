@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class HuffmanCombinedNodeTest {
 
 	@Test
-	void testConstructor() {
+	void constructor_GivenTwoHuffmanNodes_ReturnsACombinedNodeWithAFrequencyEqualToTheirSum() {
 		HuffmanNode first = new HuffmanValueNode(5, 'c');
 		HuffmanNode second = new HuffmanValueNode(20, 'b');
 

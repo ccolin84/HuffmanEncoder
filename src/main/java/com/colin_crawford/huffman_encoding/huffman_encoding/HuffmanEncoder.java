@@ -13,6 +13,13 @@ public class HuffmanEncoder {
 	}
 
 	HuffmanEncoder(String message, HuffmanTree huffmanTree) {
+		if (message == null) {
+			throw new IllegalArgumentException("message cannot be null");
+		}
+		if (huffmanTree == null) {
+			throw new IllegalArgumentException("huffmanTree cannot be null");
+		}
+
 		this.huffmanTree = huffmanTree;
 		this.charEncodings = this.getCodesFromTree(huffmanTree);
 		this.encodedMessage = this.encodeMessage(message);

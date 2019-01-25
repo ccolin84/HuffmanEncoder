@@ -1,6 +1,7 @@
 package com.colin_crawford.huffman_encoding.huffman_encoding;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
@@ -8,6 +9,27 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 class HuffmanEncoderTest {
+
+	@Test
+	void constructor_GivenANullMessage_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new HuffmanEncoder(null);
+		});
+	}
+
+	@Test
+	void constructor_GivenANullMessageAndHuffmanTree_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new HuffmanEncoder(null, new HuffmanTree(""));
+		});
+	}
+
+	@Test
+	void constructor_GivenANullHuffmanTree_ThrowsAnException() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			new HuffmanEncoder("", null);
+		});
+	}
 
 	@Test
 	void constructor_GivenAnEmptyString_ItShouldntEncodeAnyChars() {

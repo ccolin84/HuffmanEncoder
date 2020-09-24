@@ -1,0 +1,5 @@
+Serialize to bytes
+- serialize the tree
+- add terminal character to tree
+
+stream rather than read in the whole file
